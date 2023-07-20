@@ -1,0 +1,12 @@
+package com.healthcare.dao;
+
+import com.healtcare.entites.Product;
+
+public interface ProductDao {
+	
+	public Product getProduct();
+	public void updateProduct();
+	public boolean productIsAvailable();
+	public Product getProductByName();
+	public Product getProductByType();
+}

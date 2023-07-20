@@ -1,0 +1,120 @@
+package com.healthcare.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.healtcare.entites.Product;
+import com.healthcare.helper.ConnectionProvider;
+
+public class ProductDaoImpl implements ProductDao {
+	Product p = new Product();
+	
+	@Override
+	public void addProduct(Product product) {
+		
+		try {
+			Connection con = ConnectionProvider.getConnection();
+			PreparedStatement ps = con.prepareStatement("insert into product values(?,?,?,?,?,?,?,?,?)");
+			ps.setInt(9, product.getPid());
+			ps.setString(1, product.getPname());
+			ps.setString(2, product.getPbrand());
+			ps.setString(3, product.getPtype());
+			ps.setString(4, product.getPimageName());
+			ps.setString(5, product.getPdescription());
+			ps.setDouble(6, product.getPquantityAvaiable());
+			ps.setDouble(7, product.getPunitPrice());
+			ps.setBoolean(8, product.isPisAvailable());
+			
+			
+			int executeUpdate = ps.executeUpdate();
+			System.out.println(executeUpdate + " row added succefully");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+	@Override
+	public Product getProduct() {
+		try {
+			String query = "select * from product";
+			Connection con = ConnectionProvider.getConnection();
+			PreparedStatement ps = con.prepareStatement(query);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			p.setPid(rs.getInt(1));
+			p.setPname(rs.getString(2));
+			p.setPbrand(rs.getString(3));
+			p.setPtype(rs.getString(4));
+			p.setPimageName(rs.getString(5));
+			p.setPdescription(rs.getString(6));
+			p.setPquantityAvaiable(rs.getDouble(7));
+			p.setPunitPrice(rs.getDouble(8));
+			p.setPisAvailable(rs.getBoolean(9));
+
+			return p;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
+	@Override
+	public void updateProduct(Product product) {
+		try {
+			Connection con = ConnectionProvider.getConnection();
+			PreparedStatement ps = con.prepareStatement(
+					"update product set "
+					+ "Pname=?,"
+					+ "Pbrand=?,"
+					+ "Ptype=?,"
+					+ "PimageName=?,"
+					+ "Pdescription=?,"
+					+ "PquantityAvaiable=?,"
+					+ "PunitPrice=?,"
+					+ "PisAvailable=? "
+					+ "where Pid =?");
+			ps.setString(1, product.getPname());
+			ps.setString(2, product.getPbrand());
+			ps.setString(3, product.getPtype());
+			ps.setString(4, product.getPimageName());
+			ps.setString(5, product.getPdescription());
+			ps.setDouble(6, product.getPquantityAvaiable());
+			ps.setDouble(7, product.getPunitPrice());
+			ps.setBoolean(8, product.isPisAvailable());
+			ps.setInt(9, product.getPid());
+			
+			int executeUpdate = ps.executeUpdate();
+			System.out.println(executeUpdate + " row updated succefully");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+
+	@Override
+	public boolean productIsAvailable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Product getProductByName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product getProductByType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+}

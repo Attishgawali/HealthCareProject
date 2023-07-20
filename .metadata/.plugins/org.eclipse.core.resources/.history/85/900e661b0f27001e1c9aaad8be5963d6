@@ -1,0 +1,48 @@
+package com.healthcare.dao;
+
+import java.sql.Connection;
+
+import com.healtcare.entites.Product;
+import com.healthcare.helper.ConnectionProvider;
+
+public class ProductDaoImpl implements ProductDao{
+
+	@Override
+	public Product getProduct(){
+		try {
+			String query="select * from ";
+			Connection con = ConnectionProvider.getConnection();
+			con.prepareStatement(q);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public void updateProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean productIsAvailable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Product getProductByName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Product getProductByType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

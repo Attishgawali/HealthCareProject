@@ -1,0 +1,5 @@
+package com.healtcare.entites;
+
+public class Product {
+
+}

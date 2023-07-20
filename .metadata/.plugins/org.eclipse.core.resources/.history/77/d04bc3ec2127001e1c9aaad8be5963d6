@@ -1,0 +1,25 @@
+package com.test;
+
+import com.healtcare.entites.Product;
+import com.healthcare.dao.ProductDaoImpl;
+
+public class Demo {
+
+	public static void main(String[] args) {
+	
+		ProductDaoImpl p1 = new ProductDaoImpl();
+		Product product = p1.getProduct();
+		System.out.println(product);
+		
+		
+		Product prod = new Product(1,"Ibuprofen","Motrin", "Nonsteroidal Anti-Inflammatory Drug", "imageIbuprofen"," Ibuprofen is commonly used to relieve pain", 50.0, 18.0, true);
+		ProductDaoImpl p2 = new ProductDaoImpl();
+		p2.updateProduct(prod);
+		
+		
+//		Product prod2= new Product(2,"Paracetamol","Panadol","imageParacetamol"," Analgesic","Paracetamol is a widely used over-the-counter medication",35.0,10.0,true);
+//		ProductDaoImpl p3 = new ProductDaoImpl();
+//		p3.addProduct(prod2);
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.test;
+
+import com.healtcare.entites.Product;
+import com.healthcare.dao.ProductDaoImpl;
+
+public class Demo {
+
+	public static void main(String[] args) {
+	
+		ProductDaoImpl p1 = new ProductDaoImpl();
+		Product product = p1.getProduct();
+		
+		System.out.println(product);
+
+	}
+
+}

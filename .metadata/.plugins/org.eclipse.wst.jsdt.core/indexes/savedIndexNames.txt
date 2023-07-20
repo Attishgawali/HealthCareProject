@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+E:\Coding journey\Projects\HealthCare\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+192499768.index
